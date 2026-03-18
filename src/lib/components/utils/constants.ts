@@ -12,3 +12,4 @@ export const Nieuws = "/nieuws"
 export const Contact = "/contact"
 
 export const FooterText = "© 2026 Messenslijperij HillKnives. Alle rechten voorbehouden."
+export const YoutubeLink = "https://www.youtube.com/watch?v=uS4NX60ZvdY"
