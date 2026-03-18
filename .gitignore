@@ -21,3 +21,9 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Large media files (store separately, e.g. Git LFS or CDN)
+*.mp4
+*.mov
+*.avi
+*.webm
