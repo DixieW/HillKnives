@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp:*)",
+      "Bash(where claude:*)",
+      "Read(//c/Temp/WebsiteDesign/HillKnives - Slijperij - Svelte/$APPDATA/npm/**)",
+      "Read(//c/Temp/WebsiteDesign/HillKnives - Slijperij - Svelte/$LOCALAPPDATA/Programs/claude/**)",
+      "Read(//c/Users/**)",
+      "Bash(export PATH=\"$PATH:/c/Users/laure/.local/bin\")",
+      "mcp__github__search_repositories",
+      "mcp__github__create_or_update_file",
+      "mcp__github__get_file_contents"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+/* --color-bg-surface: hsl(160, 11%, 52%);
+    --color-bg-raised: hsl(120, 22%, 65%);
+    --color-olive: hsl(120, 22%, 90%);
+    --color-accent: hsl(47, 52%, 61%);
+    --color-bg: #F1DDBF;
+    --color-bg-surface: hsl(235, 10%, 80%);;
+    --color-text: hsl(0, 0%, 90%);
+    --color-text: hsl(0, 0%, 20%);
+    --color-accent: hsl(240, 65%, 45%);
+    --color-accent-dim: hsl(55, 60%, 60%); */

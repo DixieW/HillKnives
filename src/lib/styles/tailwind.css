@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+
+    /* Backgrounds */
+    --color-bg:           #1a1c18;
+    --color-bg-surface:   #2e3129;
+    --color-bg-raised:    #3d4235;
+
+    /* Structure */
+    --color-border:       #4a5240;
+    --color-border-light: #636b58;
+    
+    /* Accent - the blade */
+    --color-accent:       #c8a84b;
+    --color-accent-dim:   rgba(200, 168, 75, 0.12);
+    --color-accent-2:     #8b3a1a;
+
+    /* Text */
+    --color-text:         #eae8e0;
+    --color-text-muted:   #a0a890;
+    --color-text-dim:     #636b58;
+
+    /* Special */
+    --color-olive:        #4a5240;
+    --color-steel:        #7a8a7e;
+
+    /* Fonts */
+    --font-display: 'Oswald', sans-serif;
+    --font-body:    'Source Serif 4', serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+  
+  p, span, a, li {
+    font-family: var(--font-body);
+  }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    background: var(--color-bg-raised);
+    font-family: var(--font-body);
+  }
+    
+}
+

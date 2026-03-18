@@ -1,0 +1,14 @@
+export const COMPANYNAME = "Messenslijperij HillKnives"
+export const EMAIL = "messenslijperij@hillknives.com"
+export const PHONENUM = "+3110-4655743"
+export const ADDRESS = "Insulindestraat 92"
+export const POSTALCODE = "3038 JC, Rotterdam"
+export const COUNTRY = "Nederland"
+
+export const Home = "/"
+export const Prijzen = "/prijzen"
+export const About = "/about"
+export const Nieuws = "/nieuws"
+export const Contact = "/contact"
+
+export const FooterText = "© 2026 Messenslijperij HillKnives. Alle rechten voorbehouden."
