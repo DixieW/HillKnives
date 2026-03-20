@@ -9,8 +9,43 @@
   export let category: string  = '';
   export let image: string     = '';
   export let href: string      = '';
-  export let readTime: string  = '';  // e.g. "3 min"
+  export let readTime: string  = '';
+
+  let lightboxOpen = false;
+
+  function openLightbox(e: MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    lightboxOpen = true;
+  }
+  function closeLightbox() { lightboxOpen = false; }
+
+  function handleKeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape') closeLightbox();
+  }
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
+
+<!-- Lightbox overlay -->
+{#if lightboxOpen}
+  <div
+    class="lightbox-backdrop"
+    role="button"
+    tabindex="0"
+    aria-label="Sluit afbeelding"
+    onclick={closeLightbox}
+    onkeydown={(e) => e.key === 'Enter' && closeLightbox()}
+  >
+    <div class="lightbox-inner" onclick={(e) => e.stopPropagation()} role="presentation">
+      <button class="lightbox-close" onclick={closeLightbox} aria-label="Sluit">✕</button>
+      <img src={image} alt={title} class="lightbox-img" />
+      {#if title}
+        <p class="lightbox-caption">{title}</p>
+      {/if}
+    </div>
+  </div>
+{/if}
 
 <svelte:element
   this={href ? 'a' : 'article'}
@@ -24,6 +59,15 @@
         <span class="badge">{category}</span>
       {/if}
       <div class="overlay" aria-hidden="true"></div>
+      <!-- Zoom button -->
+      <button class="zoom-btn" onclick={openLightbox} title="Vergroot afbeelding" aria-label="Vergroot afbeelding">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+          <line x1="8" y1="11" x2="14" y2="11"/>
+          <line x1="11" y1="8" x2="11" y2="14"/>
+        </svg>
+      </button>
     </div>
   {:else if category}
     <div class="category-strip">
@@ -52,12 +96,81 @@
 </svelte:element>
 
 <style>
+  /* ── Lightbox ───────────────────────────────────────────── */
+  .lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    cursor: zoom-out;
+  }
+  .lightbox-inner {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.7);
+    border: 1px solid var(--color-border);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: var(--color-text); }
+  .lightbox-caption {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    text-align: center;
+  }
+
+  /* ── Zoom button ────────────────────────────────────────── */
+  .zoom-btn {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(16, 18, 14, 0.75);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+    z-index: 2;
+    padding: 0.3rem;
+  }
+  .zoom-btn svg { width: 100%; height: 100%; }
+  .img-wrap:hover .zoom-btn { opacity: 1; }
+  .zoom-btn:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
   /* ── Card shell ─────────────────────────────────────────── */
-  /*
-   * Gradient border via background-clip trick:
-   * padding-box layer = card fill, border-box layer = polished blade gradient.
-   * Diagonal angle (135deg) simulates overhead light catching the frame edge.
-   */
   .news-card {
     display: flex;
     flex-direction: column;
@@ -70,8 +183,8 @@
         var(--color-border-light) 28%,
         #9aaa96                   40%,
         #d8d8d4                   48%,
-        #e8e8e4                   50%,   /* bright edge highlight — no variable */
-        var(--color-accent)       54%,   /* gold glint */
+        #e8e8e4                   50%,
+        var(--color-accent)       54%,
         #9aaa96                   62%,
         var(--color-border-light) 75%,
         var(--color-bg-raised)    88%,
@@ -86,7 +199,6 @@
     position: relative;
   }
 
-  /* On hover: brighter highlights — like tilting the blade more into the light */
   .news-card--link:hover {
     background:
       linear-gradient(var(--color-bg-surface), var(--color-bg-surface)) padding-box,
@@ -96,8 +208,8 @@
         var(--color-border-light) 20%,
         #c8c8c4                   38%,
         #e8e8e4                   47%,
-        #ffffff                   50%,   /* peak — full light catch */
-        var(--color-accent)       54%,   /* gold glint */
+        #ffffff                   50%,
+        var(--color-accent)       54%,
         #c8c8c4                   64%,
         var(--color-border-light) 78%,
         var(--color-bg-raised)   100%
@@ -122,9 +234,7 @@
     transition: transform 0.45s ease;
   }
 
-  .news-card--link:hover img {
-    transform: scale(1.05);
-  }
+  .news-card--link:hover img { transform: scale(1.05); }
 
   .overlay {
     position: absolute;
@@ -133,9 +243,7 @@
     transition: background 0.3s;
   }
 
-  .news-card--link:hover .overlay {
-    background: rgba(0, 0, 0, 0.18);
-  }
+  .news-card--link:hover .overlay { background: rgba(0, 0, 0, 0.18); }
 
   /* ── Badge ──────────────────────────────────────────────── */
   .badge {
@@ -153,18 +261,11 @@
     z-index: 1;
   }
 
-  .category-strip {
-    padding: 0.75rem 1.25rem 0;
-  }
-
-  .badge--inline {
-    position: static;
-    display: inline-block;
-  }
+  .category-strip { padding: 0.75rem 1.25rem 0; }
+  .badge--inline { position: static; display: inline-block; }
 
   /* ── Content ────────────────────────────────────────────── */
   .content {
-    margin: 5rem;
     padding: 1.25rem 1.4rem 1.5rem;
     display: flex;
     flex-direction: column;
@@ -172,14 +273,9 @@
     flex: 1;
   }
 
-  .meta {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
+  .meta { display: flex; align-items: center; gap: 0.4rem; }
 
-  .date,
-  .read-time {
+  .date, .read-time {
     font-family: var(--font-display);
     font-size: 0.68rem;
     font-weight: 400;
@@ -188,10 +284,7 @@
     color: var(--color-text-dim);
   }
 
-  .sep {
-    color: var(--color-text-dim);
-    font-size: 0.75rem;
-  }
+  .sep { color: var(--color-text-dim); font-size: 0.75rem; }
 
   .title {
     font-family: var(--font-display);
@@ -226,15 +319,7 @@
     transition: gap 0.2s;
   }
 
-  .news-card--link:hover .read-more {
-    gap: 0.6rem;
-  }
-
-  .arrow {
-    transition: transform 0.2s;
-  }
-
-  .news-card--link:hover .arrow {
-    transform: translateX(3px);
-  }
+  .news-card--link:hover .read-more { gap: 0.6rem; }
+  .news-card--link:hover .arrow { transform: translateX(3px); }
+  .arrow { transition: transform 0.2s; }
 </style>

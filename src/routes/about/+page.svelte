@@ -1,6 +1,6 @@
 <script lang="ts">
     import FadeIn from '$lib/components/ui/FadeIn.svelte';
-    import Divider from '$lib/components/ui/divider.svelte';
+    import Divider from '$lib/components/ui/Divider.svelte';
     import Image from '$lib/assets/images/hill knives-56 (webformaat srgb).jpg';
     import Image2 from '$lib/assets/images/dsci0334-crop-u12507.jpg';
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import HamburgerMenuIcon from './hamburgmenuicon.svelte';
+    import HamburgerMenuIcon from './HamburgerMenuIcon.svelte';
     import * as C from '../utils/constants.ts';
 
     export let open = false;

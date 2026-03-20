@@ -1,9 +1,9 @@
 <script lang="ts">
     import FadeIn from '$lib/components/ui/FadeIn.svelte';
-    import Imageblock from '$lib/components/ui/imageblock.svelte';
-    import Divider from '$lib/components/ui/divider.svelte';
-    import ServiceCard from '$lib/components/ui/servicecard.svelte';
-    import BtnTrans from '$lib/components/ui/buttontrans.svelte';
+    import ImageBlock from '$lib/components/ui/ImageBlock.svelte';
+    import Divider from '$lib/components/ui/Divider.svelte';
+    import ServiceCard from '$lib/components/ui/ServiceCard.svelte';
+    import BtnTrans from '$lib/components/ui/ButtonTrans.svelte';
     import Image1 from '$lib/assets/images/hb-messen_031.jpg';
     import Image2 from '$lib/assets/images/luxury line steakmessen rvs311x323.jpg';
     import Image3 from '$lib/assets/images/img-20171014-wa0000.jpg';
@@ -103,13 +103,13 @@
     </FadeIn>
     <div class="showcase-grid">
         <FadeIn direction="right" duration={1200}>
-            <Imageblock src={Image2} alt="Steakmessen" title="Steak & tafelmessen" subtitle="Scherp voor elk moment" aspect="square" fit="cover" width="100%" maxWidth="800px" />
+            <ImageBlock src={Image2} alt="Steakmessen" title="Steak & tafelmessen" subtitle="Scherp voor elk moment" aspect="square" fit="cover" width="100%" maxWidth="800px" />
         </FadeIn>
         <FadeIn duration={1200} delay={150}>
-            <Imageblock src={Image1} alt="Messen slijpen" title="Professioneel slijpen" subtitle="Precisie boven alles" aspect="portrait" fit="cover" width="100%" maxWidth="800px" />
+            <ImageBlock src={Image1} alt="Messen slijpen" title="Professioneel slijpen" subtitle="Precisie boven alles" aspect="portrait" fit="cover" width="100%" maxWidth="800px" />
         </FadeIn>
         <FadeIn direction="left" duration={1200} delay={300}>
-            <Imageblock src={Image3} alt="Gereedschap" title="40 jaar vakmanschap" subtitle="Familie & traditie" aspect="square" fit="cover" width="100%" maxWidth="800px" />
+            <ImageBlock src={Image3} alt="Gereedschap" title="40 jaar vakmanschap" subtitle="Familie & traditie" aspect="square" fit="cover" width="100%" maxWidth="800px" />
         </FadeIn>
     </div>
 </section>

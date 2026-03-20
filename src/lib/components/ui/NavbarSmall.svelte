@@ -1,7 +1,7 @@
 <script lang="ts">
     import LogoImg from '$lib/assets/Images/logo.png';
     import * as C from '../utils/constants.ts';
-    import Hamburgmenuicon from './hamburgmenuicon.svelte';
+    import HamburgerMenuIcon from './HamburgerMenuIcon.svelte';
     export let open = false;
 
     const Home = C.Home;
@@ -15,7 +15,7 @@
         </a>
         <h4 class="flex flex-1 mr-auto item-center font-[Open_Sans] px-2 py-5 text-xl font-bold text-shadow-lg">HILL KNIVES <br> Messenslijperij</h4>
         <div class="flex shrink-0">
-            <Hamburgmenuicon bind:open />
+            <HamburgerMenuIcon bind:open />
         </div>
     </div>
 </nav>

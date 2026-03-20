@@ -310,7 +310,7 @@
         position: absolute;
         top: -4px;
         right: -4px;
-        background: var(--color-accent-2);
+        background: var(--color-accent-2-gradient);
         color: white;
         border-radius: 50%;
         width: 1.3rem;

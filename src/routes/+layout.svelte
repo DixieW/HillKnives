@@ -1,7 +1,7 @@
 <script lang="ts">
     import favicon from '$lib/assets/Images/HillknivesLogo.png';
-	import Header from '$lib/components/layouts/header.svelte';
-    import Footer from '$lib/components/layouts/footer.svelte';
+	import Header from '$lib/components/layouts/Header.svelte';
+    import Footer from '$lib/components/layouts/Footer.svelte';
     import '$lib/styles/tailwind.css';
 	let { children } = $props();
     // import * as C from '$lib/components/utils/constants.ts';

@@ -1,9 +1,9 @@
 <script lang="ts">
 	// import * as C from '../utils/constants.ts';
 	// import LogoImg from '$lib/assets/Images/logo.png';
-	import Navbarbig from '../ui/navbarbig.svelte';
-	import Navbarsmall from '../ui/navbarsmall.svelte';
-	import Popoutmenu from '../ui/popoutmenu.svelte';
+	import NavbarBig from '../ui/NavbarBig.svelte';
+	import NavbarSmall from '../ui/NavbarSmall.svelte';
+	import PopoutMenu from '../ui/PopoutMenu.svelte';
 
 	// const Home = C.Home;
 	// const Prijzen = C.Prijzen;
@@ -35,9 +35,9 @@
 	<a class="supera" href={Contact}><strong>Contact</strong></a>
 </nav> -->
 
-<Navbarbig/>
-<Navbarsmall bind:open={open}/>
-<Popoutmenu bind:open={open}/>
+<NavbarBig/>
+<NavbarSmall bind:open={open}/>
+<PopoutMenu bind:open={open}/>
 <!-- 
 <nav class="nav-small">
 	<a href={Home} class="logo">

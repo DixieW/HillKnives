@@ -89,10 +89,13 @@
   <section class="split-section split-section--alt">
     <FadeIn direction="right" duration={1000}>
       <div class="split-text">
-        <p class="section-eyebrow">Actueel</p>
-        <h2 class="section-title left">Laatste nieuws</h2>
+        <p class="section-eyebrow">In de pers</p>
+        <h2 class="section-title left">Trots in de krant</h2>
         <p>
-          Blijf op de hoogte van het laatste nieuws rondom Hill Knives. Van nieuwe apparatuur tot persberichten en bijzondere verhalen vanuit de werkplaats.
+          Een krantenartikel dat ons na aan het hart ligt. Mooi om te zien dat het vakmanschap van onze slijperij de aandacht heeft getrokken van de pers — een erkenning van decennia trouw handwerk in Rotterdam.
+        </p>
+        <p>
+          Klik op de afbeelding om het artikel te vergroten.
         </p>
       </div>
     </FadeIn>
@@ -100,11 +103,10 @@
       <div class="articles-col">
         <NewsArticleCard
           image={ArticleImg}
-          title="Nieuwe slijpmachine aangekomen"
-          excerpt="Onze nieuwste Tormek machine is gearriveerd en zorgt voor een nog scherpere snede en een mooiere afwerking."
-          date="18 maart 2026"
-          category="Nieuws"
-          readTime="2 min"
+          title="Hill Knives in de pers"
+          excerpt="Een mooie erkenning van ons vakmanschap — Rotterdam's bekende messenslijperij onder de aandacht."
+          date=""
+          category="Pers"
           href=""
         />
       </div>

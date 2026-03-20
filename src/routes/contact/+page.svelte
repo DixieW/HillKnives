@@ -389,10 +389,10 @@
     font-size: 1rem;
     padding: 1rem 2rem;
     border: solid 2px var(--color-steel);
-    background-color: var(--color-accent-2);
+    background: var(--color-accent-2-gradient);
     cursor: pointer;
     box-shadow: 1px 1px 2px 0px var(--color-bg);
-    transition: background-color 0.2s, box-shadow 0.2s;
+    transition: background 0.2s, box-shadow 0.2s;
   }
 
   .submit-btn:disabled {
