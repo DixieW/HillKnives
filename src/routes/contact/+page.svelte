@@ -7,7 +7,7 @@
     import { COUNTRY } from '$lib/components/utils/constants';
     import { POSTALCODE } from '$lib/components/utils/constants';
     import { onMount } from 'svelte';
-
+    import { cart, cartToMessage } from '$lib/stores/cart';
 
   // ⚠️ Replace with your real key from https://dashboard.hcaptcha.com
     const SITE_KEY = '10000000-ffff-ffff-ffff-000000000001'; // test key for dev
@@ -17,6 +17,15 @@
     let phone = '';
     let subject = '';
     let message = '';
+
+    // Pre-fill message with cart items if any
+    let cartItems = $derived($cart);
+    $effect(() => {
+        if (cartItems.length > 0 && !message) {
+            message = cartToMessage(cartItems);
+            subject = subject || 'Prijsvraag';
+        }
+    });
 
     let captchaToken: string | null = null;
     let captchaError = false;
@@ -204,6 +213,18 @@
                 {#if errors.subject}<span class="error">{errors.subject}</span>{/if}
               </div>
             </div>
+
+            {#if cartItems.length > 0}
+                <div class="cart-summary">
+                    <span class="cart-summary-title">Uw bestelling ({cartItems.reduce((s,i) => s + i.quantity, 0)} items)</span>
+                    <ul>
+                        {#each cartItems as item}
+                            <li>{item.quantity}× {item.label} — {item.price}</li>
+                        {/each}
+                    </ul>
+                    <button type="button" class="clear-cart-btn" onclick={() => { cart.clear(); message = ''; }}>Wis bestelling</button>
+                </div>
+            {/if}
 
             <div class="form-group">
               <label for="message">Bericht *</label>
@@ -517,6 +538,47 @@
       padding: 1.5rem;
     }
   }
+  /* ── Cart summary ───────────────────────────────────── */
+  .cart-summary {
+    background: var(--color-bg-raised);
+    border: 1px solid var(--color-accent);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .cart-summary-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .cart-summary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .cart-summary li {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  .clear-cart-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-dim);
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-decoration: underline;
+    align-self: flex-start;
+    padding: 0;
+    transition: color 0.2s;
+  }
+  .clear-cart-btn:hover { color: var(--color-accent-2); }
+
   @media (max-width: 600px) {
     .form-row { grid-template-columns: 1fr; }
     .form {
