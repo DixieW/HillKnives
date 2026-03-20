@@ -42,7 +42,7 @@
                     <tbody>
                         {#each category.items as item}
                             {@const id = `${category.title}__${item.label}`}
-                            <tr class="bg-(--color-olive) hover:bg-(--color-accent-2) transition-colors">
+                            <tr class="price-row">
                                 <td class="font-[Open_Sans] border border-(--color-text) p-4">{item.label}</td>
                                 <td class="font-[Open_Sans] border border-(--color-text) p-4 text-nowrap font-bold text-(--color-accent)">{item.price ?? '-'}</td>
                                 <td class="font-[Open_Sans] border border-(--color-text) p-4">{item.unit ?? '-'}</td>
@@ -67,6 +67,16 @@
 </div>
 
 <style>
+    .price-row {
+        background-color: var(--color-olive);
+        transition: background 0.2s, box-shadow 0.2s;
+    }
+    .price-row:hover {
+        background: var(--color-accent-2-shine);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 180, 120, 0.2),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+    }
     .add-btn {
         width: 2.2rem;
         height: 2.2rem;

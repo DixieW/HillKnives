@@ -16,7 +16,15 @@
     --color-accent:       #c8a84b;
     --color-accent-dim:   rgba(200, 168, 75, 0.12);
     --color-accent-2:     #8b3a1a;
-    --color-accent-2-gradient: linear-gradient(135deg, #c4572a 0%, #8b3a1a 45%, rgba(139, 58, 26, 0.72) 100%);
+    --color-accent-2-shine:
+      linear-gradient(
+        180deg,
+        rgba(230, 130, 70, 0.35) 0%,
+        #c4572a               8%,
+        #8b3a1a               42%,
+        #5a2210               78%,
+        rgba(25, 8, 2, 0.92) 100%
+      );
 
     /* Text */
     --color-text:         #eae8e0;

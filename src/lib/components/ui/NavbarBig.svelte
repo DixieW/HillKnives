@@ -22,9 +22,34 @@
                 <a class="hover:underline hover:pointer text-shadow-lg" href={Prijzen}>Prijzen</a>
                 <a class="hover:underline hover:pointer text-shadow-lg text-nowrap" href={About}>Over ons</a>
                 <a class="hover:underline hover:pointer text-shadow-lg" href={Nieuws}>Nieuws</a>
-                <a class="mr-5 text-(--color-accent) bg-(--color-accent-2) shadow-xl border-3 rounded-2xl px-2  hover:underline hover:pointer hover:text-(--color-text) hover:bg-(--color-text-muted)" href={Contact}><strong>Contact</strong></a>
+                <a class="contact-cta" href={Contact}><strong>Contact</strong></a>
             </nav>
         </div>
     </div>
 </div>
 
+<style>
+    .contact-cta {
+        padding: 0.3rem 0.85rem;
+        border-radius: 1rem;
+        border: 2px solid rgba(200, 100, 50, 0.6);
+        background: var(--color-accent-2-shine);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 180, 120, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+            0 2px 10px rgba(139, 58, 26, 0.45);
+        color: var(--color-accent);
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+        display: inline-block;
+    }
+    .contact-cta:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 200, 140, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            0 4px 16px rgba(139, 58, 26, 0.6);
+    }
+</style>

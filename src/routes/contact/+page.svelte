@@ -389,10 +389,13 @@
     font-size: 1rem;
     padding: 1rem 2rem;
     border: solid 2px var(--color-steel);
-    background: var(--color-accent-2-gradient);
+    background: var(--color-accent-2-shine);
     cursor: pointer;
-    box-shadow: 1px 1px 2px 0px var(--color-bg);
-    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 180, 120, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.35),
+        0 2px 10px rgba(139, 58, 26, 0.4);
+    transition: opacity 0.2s, box-shadow 0.2s, transform 0.15s;
   }
 
   .submit-btn:disabled {
