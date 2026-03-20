@@ -310,7 +310,7 @@
         position: absolute;
         top: -4px;
         right: -4px;
-        background: var(--color-accent-2-shine);
+        background: linear-gradient(180deg, rgba(230,130,70,0.35) 0%, var(--color-accent-2-light) 8%, var(--color-accent-2) 42%, var(--color-accent-2-dark) 78%, rgba(25,8,2,0.92) 100%);
         box-shadow: inset 0 1px 0 rgba(255,180,120,0.3), inset 0 -1px 0 rgba(0,0,0,0.3);
         color: white;
         border-radius: 50%;

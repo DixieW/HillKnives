@@ -389,7 +389,7 @@
     font-size: 1rem;
     padding: 1rem 2rem;
     border: solid 2px var(--color-steel);
-    background: var(--color-accent-2-shine);
+    background: linear-gradient(180deg, rgba(230,130,70,0.35) 0%, var(--color-accent-2-light) 8%, var(--color-accent-2) 42%, var(--color-accent-2-dark) 78%, rgba(25,8,2,0.92) 100%);
     cursor: pointer;
     box-shadow:
         inset 0 1px 0 rgba(255, 180, 120, 0.3),

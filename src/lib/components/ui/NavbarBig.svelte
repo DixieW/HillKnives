@@ -33,7 +33,7 @@
         padding: 0.3rem 0.85rem;
         border-radius: 1rem;
         border: 2px solid rgba(200, 100, 50, 0.6);
-        background: var(--color-accent-2-shine);
+        background: linear-gradient(180deg, rgba(230,130,70,0.35) 0%, var(--color-accent-2-light) 8%, var(--color-accent-2) 42%, var(--color-accent-2-dark) 78%, rgba(25,8,2,0.92) 100%);
         box-shadow:
             inset 0 1px 0 rgba(255, 180, 120, 0.3),
             inset 0 -1px 0 rgba(0, 0, 0, 0.35),
