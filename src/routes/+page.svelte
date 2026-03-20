@@ -277,7 +277,10 @@
         margin: 0 auto;
     }
 
-    .divider-wrap { padding: 0 2rem; }
+    .divider-wrap {
+        padding: 0 2rem;
+        background: var(--color-bg);
+    }
 
     /* ── CTA section ──────────────────────────────────── */
     .cta-section {

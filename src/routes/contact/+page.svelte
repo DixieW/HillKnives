@@ -156,7 +156,7 @@
             <div class="success-icon" aria-hidden="true">✓</div>
             <h2>Bericht Verstuurd!</h2>
             <p>Bedankt voor uw bericht. We nemen spoedig contact met u op.</p>
-            <button class="btn btn-outline" on:click={reset}>
+            <button class="btn btn-outline" onclick={reset}>
               Nieuw Bericht
             </button>
           </div>
@@ -257,7 +257,7 @@
             
             <button
                 class="btn btn-primary submit-btn"
-                on:click={handleSubmit}
+                onclick={handleSubmit}
                 disabled={submitting}
             >
                 {submitting ? 'Versturen…' : 'Verstuur Bericht'}

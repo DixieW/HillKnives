@@ -2,6 +2,7 @@
   import NewsArticleCard from '$lib/components/ui/NewsArticleCard.svelte';
   import ImageGallery from '$lib/components/ui/ImageGallery.svelte';
   import FadeIn from '$lib/components/ui/FadeIn.svelte';
+  import ArticleImg from '$lib/assets/images/Article.jpg';
   import Image1 from '$lib/assets/images/TestImage1.jpeg';
   import Image2 from '$lib/assets/images/TestImage2.jpeg';
   import Image3 from '$lib/assets/images/TestImage3.jpeg';
@@ -59,33 +60,55 @@
     </FadeIn>
   </section>
 
-  <!-- ── GALLERY ── -->
-  <section class="gallery-section">
-    <FadeIn direction="down" duration={900}>
-      <h2 class="section-title">Voor &amp; Na</h2>
+  <!-- ── VOOR & NA ── -->
+  <section class="split-section">
+    <FadeIn direction="right" duration={1000}>
+      <div class="gallery-wrap">
+        <h2 class="section-title">Voor &amp; Na</h2>
+        <ImageGallery {images} />
+      </div>
     </FadeIn>
-    <div class="gallery-wrap">
-      <ImageGallery {images} />
-    </div>
+    <FadeIn direction="left" duration={1000} delay={200}>
+      <div class="split-text">
+        <p class="split-eyebrow">Het verschil zit in het detail</p>
+        <h3 class="split-heading">Van bot naar briljant</h3>
+        <p>
+          Elk mes dat onze werkplaats binnenkomt, verlaat het scherper dan ooit. In de voor- en na-galerij ziet u het verschil met eigen ogen — van een bot, uitgelopen lemmet tot een mes dat snijdt als een scheermesje.
+        </p>
+        <p>
+          Wij gebruiken professionele slijptechnieken afgestemd op het type staal en de oorspronkelijke slijphoek van het mes. Geen standaard aanpak, maar vakwerk op maat.
+        </p>
+        <p class="split-note">
+          Foto's worden binnenkort toegevoegd. Heeft u een voor/na foto van uw mes? Stuur ons een bericht via het contactformulier.
+        </p>
+      </div>
+    </FadeIn>
   </section>
 
-  <!-- ── ARTICLES ── -->
-  <section class="articles-section">
-    <FadeIn direction="down" duration={900}>
-      <h2 class="section-title">Laatste nieuws</h2>
+  <!-- ── LAATSTE NIEUWS ── -->
+  <section class="split-section split-section--alt">
+    <FadeIn direction="right" duration={1000}>
+      <div class="split-text">
+        <p class="section-eyebrow">Actueel</p>
+        <h2 class="section-title left">Laatste nieuws</h2>
+        <p>
+          Blijf op de hoogte van het laatste nieuws rondom Hill Knives. Van nieuwe apparatuur tot persberichten en bijzondere verhalen vanuit de werkplaats.
+        </p>
+      </div>
     </FadeIn>
-    <div class="articles-grid">
-      <FadeIn direction="up" duration={900} delay={100}>
+    <FadeIn direction="left" duration={1000} delay={200}>
+      <div class="articles-col">
         <NewsArticleCard
+          image={ArticleImg}
           title="Nieuwe slijpmachine aangekomen"
           excerpt="Onze nieuwste Tormek machine is gearriveerd en zorgt voor een nog scherpere snede en een mooiere afwerking."
           date="18 maart 2026"
           category="Nieuws"
           readTime="2 min"
-          href="/nieuws/slijpmachine"
+          href=""
         />
-      </FadeIn>
-    </div>
+      </div>
+    </FadeIn>
   </section>
 
 </main>
@@ -189,33 +212,71 @@
     height: 100%;
   }
 
-  /* ── Gallery & Articles ── */
-  .gallery-section,
-  .articles-section {
+  /* ── Split sections (Voor & Na + Laatste nieuws) ── */
+  .split-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
     padding: 5rem clamp(1.5rem, 6vw, 8rem);
+    border-bottom: 1px solid var(--color-border);
   }
-  .articles-section { background: var(--color-bg-surface); }
+  .split-section--alt {
+    background: var(--color-bg-surface);
+  }
+
+  /* ── Shared text block ── */
+  .split-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .split-eyebrow,
+  .section-eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .split-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--color-text);
+  }
+  .split-text p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+  }
+  .split-note {
+    font-size: 0.8rem !important;
+    color: var(--color-text-dim) !important;
+    font-style: italic;
+    border-left: 2px solid var(--color-border);
+    padding-left: 0.75rem;
+  }
 
   .section-title {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--color-text);
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
   }
+  .section-title.left { text-align: left; }
 
-  .gallery-wrap { max-width: 900px; }
-
-  .articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
+  .gallery-wrap { width: 100%; }
+  .articles-col { display: flex; flex-direction: column; gap: 1.5rem; }
 
   @media (max-width: 768px) {
-    .documentary-section {
+    .documentary-section,
+    .split-section {
       grid-template-columns: 1fr;
       gap: 2.5rem;
     }
