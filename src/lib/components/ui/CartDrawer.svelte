@@ -28,7 +28,7 @@
 <!-- Drawer -->
 <aside class="drawer" class:open>
     <div class="drawer-header">
-        <span class="drawer-title">Uw Bestelling</span>
+        <span class="drawer-title">Uw Selectie</span>
         <button class="close-btn" onclick={() => open = false} aria-label="Sluit">✕</button>
     </div>
 
@@ -62,9 +62,9 @@
                 <span class="total-price">€ {total.toFixed(2).replace('.', ',')}</span>
             </div>
             <button class="contact-btn" onclick={goToContact}>
-                Stuur uw bestelling →
+                Stuur een bericht →
             </button>
-            <button class="clear-btn" onclick={() => cart.clear()}>Wis bestelling</button>
+            <button class="clear-btn" onclick={() => cart.clear()}>Wis selectie</button>
         </div>
     {/if}
 </aside>
@@ -73,8 +73,8 @@
 <button
     class="cart-fab"
     onclick={() => open = !open}
-    aria-label="Bekijk bestelling"
-    title="Uw bestelling"
+    aria-label="Bekijk selectie"
+    title="Uw selectie"
 >
     🗡
     {#if items.length > 0}

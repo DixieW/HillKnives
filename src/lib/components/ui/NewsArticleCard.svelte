@@ -10,6 +10,7 @@
   export let image: string     = '';
   export let href: string      = '';
   export let readTime: string  = '';
+  export let badgePosition: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' = 'top-right';
 
   let lightboxOpen = false;
 
@@ -54,9 +55,9 @@
 >
   {#if image}
     <div class="img-wrap">
-      <img src={image} alt={title} loading="lazy" />
+      <img src={image} alt={title} loading="lazy" onclick={openLightbox} class="zoomable" />
       {#if category}
-        <span class="badge">{category}</span>
+        <span class="badge badge--{badgePosition}">{category}</span>
       {/if}
       <div class="overlay" aria-hidden="true"></div>
       <!-- Zoom button -->
@@ -228,11 +229,12 @@
 
   img {
     width: 100%;
-    height: 100%;
+    height: 110%;
     object-fit: cover;
     display: block;
     transition: transform 0.45s ease;
   }
+  img.zoomable { cursor: zoom-in; }
 
   .news-card--link:hover img { transform: scale(1.05); }
 
@@ -241,6 +243,7 @@
     inset: 0;
     background: rgba(0, 0, 0, 0);
     transition: background 0.3s;
+    pointer-events: none;
   }
 
   .news-card--link:hover .overlay { background: rgba(0, 0, 0, 0.18); }
@@ -248,8 +251,6 @@
   /* ── Badge ──────────────────────────────────────────────── */
   .badge {
     position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
     background: var(--color-accent);
     color: #0a0b09;
     font-family: var(--font-display);
@@ -260,6 +261,10 @@
     padding: 0.2rem 0.55rem;
     z-index: 1;
   }
+  .badge--top-left     { top: 0.75rem;    left: 0.75rem;  }
+  .badge--top-right    { top: 0.75rem;    right: 0.75rem; }
+  .badge--bottom-left  { bottom: 0.75rem; left: 0.75rem;  }
+  .badge--bottom-right { bottom: 0.75rem; right: 0.75rem; }
 
   .category-strip { padding: 0.75rem 1.25rem 0; }
   .badge--inline { position: static; display: inline-block; }

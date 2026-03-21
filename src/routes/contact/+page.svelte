@@ -19,7 +19,7 @@
     $effect(() => {
         if (cartItems.length > 0 && !message) {
             message = cartToMessage(cartItems);
-            subject = subject || 'Prijsvraag';
+            subject = subject || 'Prijzen';
         }
     });
 
@@ -208,10 +208,8 @@
                 <label for="subject">Onderwerp *</label>
                 <select class="border-solid bg-(--color-bg) border-2 border-(--color-border) pl-1 color-(--color-text-muted)" id="subject" bind:value={subject} aria-invalid={!!errors.subject}>
                   <option value="">— Selecteer onderwerp —</option>
-                  <option>Algemene vraag</option>
-                  <option>Prijsvraag</option>
+                  <option>Prijzen</option>
                   <option>Maatwerk / speciaal mes</option>
-                  <option>Volume of contractprijs</option>
                   <option>Klacht of feedback</option>
                   <option>Anders</option>
                 </select>
@@ -221,13 +219,13 @@
 
             {#if cartItems.length > 0}
                 <div class="cart-summary">
-                    <span class="cart-summary-title">Uw bestelling ({cartItems.reduce((s,i) => s + i.quantity, 0)} items)</span>
+                    <span class="cart-summary-title">Uw selectie ({cartItems.reduce((s,i) => s + i.quantity, 0)} items)</span>
                     <ul>
                         {#each cartItems as item}
                             <li>{item.quantity}× {item.label} — {item.price}</li>
                         {/each}
                     </ul>
-                    <button type="button" class="clear-cart-btn" onclick={() => { cart.clear(); message = ''; }}>Wis bestelling</button>
+                    <button type="button" class="clear-cart-btn" onclick={() => { cart.clear(); message = ''; }}>Wis selectie</button>
                 </div>
             {/if}
 

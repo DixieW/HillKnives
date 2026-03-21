@@ -24,7 +24,7 @@
 
 <div class="m-5 p-5">
     <h1 class="font-display text-4xl font-bold text-center mb-2">{PriceTableTitle}</h1>
-    <p class="text-center text-(--color-text-muted) mb-8 text-sm tracking-widest uppercase">Klik op een dienst om toe te voegen aan uw bestelling</p>
+    <p class="text-center text-(--color-text-muted) mb-8 text-sm tracking-widest uppercase">Klik op een dienst om toe te voegen aan uw selectie</p>
 
     {#each PRICE_LIST as category}
         <section class="mb-6">
@@ -36,8 +36,7 @@
                             <th class="text-xl font-display border border-(--color-text) p-4 text-left">Dienst</th>
                             <th class="text-xl font-display border border-(--color-text) p-4 text-left text-nowrap">Prijs</th>
                             <th class="text-xl font-display border border-(--color-text) p-4 text-left">Eenheid</th>
-                            <th class="text-xl font-display border border-(--color-text) p-4 text-center w-16">Bestel</th>
-                        </tr>
+                            <th class="text-md font-display border border-(--color-text) p-3 text-center w-16 text-nowrap">Voeg toe</tr>
                     </thead>
                     <tbody>
                         {#each category.items as item}
@@ -51,7 +50,7 @@
                                         onclick={() => addToCart(category.title, item)}
                                         class="add-btn"
                                         class:added={addedId === id}
-                                        title="Voeg toe aan bestelling"
+                                        title="Voeg toe aan selectie"
                                         aria-label="Voeg {item.label} toe"
                                     >
                                         {addedId === id ? '✓' : '+'}

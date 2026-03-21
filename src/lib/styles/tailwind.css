@@ -48,30 +48,30 @@
 
 }
 
-/* ── Light theme body override — prevent bg-raised mismatch ── */
+/* ── Light theme body override ────────────────────────────── */
 [data-theme="light"] body {
-  background: #b08082;
+  background: #f2f2f0;
 }
 
-/* ── Light theme (50% towards #580006 from original) ─────── */
+/* ── Light theme: neutral grey/white ─────────────────────── */
 [data-theme="light"] {
-  --color-bg:           #b08082;   /* 0.80×#c6a0a1 + 0.20×#580006 */
-  --color-bg-surface:   #a77578;   /* 0.80×#bb9294 + 0.20×#580006 */
-  --color-bg-raised:    #a06a6c;   /* 0.80×#b28486 + 0.20×#580006 */
+  --color-bg:           #f2f2f0;   /* warm off-white */
+  --color-bg-surface:   #e8e8e5;   /* light grey surface */
+  --color-bg-raised:    #d8d8d4;   /* medium grey card */
 
-  --color-border:       #955659;   /* 0.80×#a46c6e + 0.20×#580006 */
-  --color-border-light: #8b4c4f;   /* 0.80×#985f61 + 0.20×#580006 */
+  --color-border:       hsl(14, 67%, 27%);   /* dark-middle rust — readable on light bg */
+  --color-border-light: hsl(14, 57%, 27%);   /* dark rust — readable on light bg */
 
-  --color-accent:       #c8a84b;   /* gold brighter — more contrast on red bg */
-  --color-accent-dim:   rgba(200, 168, 75, 0.20);
-  --color-accent-2:     #580006;   /* deep blood red */
+  --color-accent:       hsl(14, 77%, 27%);   /* dark-bright rust — readable on light bg */
+  --color-accent-dim:   rgba(158, 124, 30, 0.15);
+  --color-accent-2:     #9e7c1e;   /* gold — slightly deeper for contrast on light */
 
-  --color-text:         #faf0f0;   /* near-white — dark bg now needs light text */
-  --color-text-muted:   #e8d0d0;   /* soft warm white */
-  --color-text-dim:     #c4a0a2;   /* muted rose-white */
+  --color-text:         #141414;   /* near-black */
+  --color-text-muted:   #444440;   /* dark grey */
+  --color-text-dim:     #888884;   /* medium grey */
 
-  --color-olive:        #a06a6c;
-  --color-steel:        #8a6264;
+  --color-olive:        #d8d8d4;
+  --color-steel:        #888884;
 }
 
 /* ── Shared page-header pattern (about / contact / prijzen) ── */

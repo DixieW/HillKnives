@@ -21,7 +21,7 @@
 </script>
 
 <button
-    class="theme-toggle"
+    class="theme-toggle mr-3"
     onclick={toggle}
     title={isDark ? 'Schakel naar licht thema' : 'Schakel naar donker thema'}
     aria-label={isDark ? 'Licht thema' : 'Donker thema'}
