@@ -1,11 +1,7 @@
 <!-- src/routes/contact/+page.svelte -->
 <script lang="ts">
     import FadeIn from '$lib/components/ui/FadeIn.svelte';
-    import { ADDRESS } from '$lib/components/utils/constants';
-    import { EMAIL } from '$lib/components/utils/constants';
-    import { PHONENUM } from '$lib/components/utils/constants';
-    import { COUNTRY } from '$lib/components/utils/constants';
-    import { POSTALCODE } from '$lib/components/utils/constants';
+    import { ADDRESS, EMAIL, PHONENUM, COUNTRY, POSTALCODE } from '$lib/components/utils/constants';
     import { onMount } from 'svelte';
     import { cart, cartToMessage } from '$lib/stores/cart';
 
@@ -107,17 +103,27 @@
 
     submitting = true;
 
-    // Wire up to your API route here
-    // await fetch('/api/contact', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ name, email, phone, subject, message, captchaToken })
-    // });
+    try {
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, phone, subject, message, captchaToken })
+        });
 
-        await new Promise(resolve => setTimeout(resolve, 1000)); // simulate
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            errors.form = err.message ?? 'Er is een fout opgetreden. Probeer het later opnieuw.';
+            submitting = false;
+            return;
+        }
+
         submitting = false;
         submitted = true;
+    } catch {
+        errors.form = 'Geen verbinding. Controleer uw internet en probeer opnieuw.';
+        submitting = false;
     }
+}
 
     function reset() {
         name = ''; email = ''; phone = ''; subject = ''; message = '';
@@ -131,18 +137,17 @@
   <script src="https://js.hcaptcha.com/1/api.js?onload=onloadCallback&render=explicit" async defer></script>
 </svelte:head>
 
-<section class="page-header ml-5">
-  <div class="pt-2 container flex flex-col sm:items-left sm:text-left md:items-center md:text-center gap-1 w-3xl">
-    <FadeIn delay={1000}>
-        <h1 class=" justify-center">Contact</h1>
+<main class="contact-page">
+
+<section class="page-header">
+    <FadeIn direction="down" duration={900}>
+        <p class="eyebrow">Neem contact op</p>
+        <h1 class="page-title">Contact.</h1>
+        <p class="intro">
+            Vragen over een specifiek mes, prijs of maatwerk?
+            Stuur ons een bericht — wij reageren binnen 1 werkdag.
+        </p>
     </FadeIn>
-    <FadeIn delay={2000}>
-      <p class="intro">
-        Vragen over een specifiek mes, prijs of maatwerk?
-        Stuur ons een bericht — wij reageren binnen 1 werkdag.
-      </p>
-    </FadeIn>
-  </div>
 </section>
 
 <section class="contact-section">
@@ -255,6 +260,10 @@
                 {/if}
             </div>
             
+            {#if errors.form}
+                <p class="error">{errors.form}</p>
+            {/if}
+
             <button
                 class="btn btn-primary submit-btn"
                 onclick={handleSubmit}
@@ -316,20 +325,14 @@
   </div>
 </section>
 
+</main>
+
 <style>
 
-  h1 {
-    font-family: var(--font-display);
-    color: var(--color-text);
-    font-size: clamp(3rem, 8vw, 6rem);
-    margin-bottom: 1.5rem;
-  }
-
-  .intro {
-    font-size: 1.1rem;
-    color: var(--color-text);
-    max-width: 50ch;
-    line-height: 1.7;
+  /* ── Page background — follows theme ───────────────── */
+  .contact-page {
+    background: var(--color-bg);
+    min-height: 100vh;
   }
 
   /* ── Layout ─────────────────────────────────────────── */
@@ -389,13 +392,10 @@
     font-size: 1rem;
     padding: 1rem 2rem;
     border: solid 2px var(--color-steel);
-    background: linear-gradient(180deg, rgba(230,130,70,0.35) 0%, var(--color-accent-2-light) 8%, var(--color-accent-2) 42%, var(--color-accent-2-dark) 78%, rgba(25,8,2,0.92) 100%);
+    background: var(--color-accent-2);
     cursor: pointer;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 180, 120, 0.3),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-        0 2px 10px rgba(139, 58, 26, 0.4);
-    transition: opacity 0.2s, box-shadow 0.2s, transform 0.15s;
+    box-shadow: 1px 1px 2px 0px var(--color-bg);
+    transition: background 0.2s, box-shadow 0.2s;
   }
 
   .submit-btn:disabled {

@@ -2,6 +2,7 @@
     import LogoImg from '$lib/assets/Images/logo.png';
     import * as C from '../utils/constants.ts';
     import HamburgerMenuIcon from './HamburgerMenuIcon.svelte';
+    import ThemeToggle from './ThemeToggle.svelte';
     export let open = false;
 
     const Home = C.Home;
@@ -14,7 +15,8 @@
             <img class="max-w-[60%] max-h-[60%] min-w-[50%] min-h-[50%] text-shadow-lg p-1" src={LogoImg} alt="HillKnives Logo" >
         </a>
         <h4 class="flex flex-1 mr-auto item-center font-[Open_Sans] px-2 py-5 text-xl font-bold text-shadow-lg">HILL KNIVES <br> Messenslijperij</h4>
-        <div class="flex shrink-0">
+        <div class="flex shrink-0 items-center gap-2">
+            <ThemeToggle />
             <HamburgerMenuIcon bind:open />
         </div>
     </div>

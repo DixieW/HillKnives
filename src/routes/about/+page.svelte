@@ -121,30 +121,6 @@
         color: var(--color-text);
     }
 
-    /* ── Header ── */
-    .page-header {
-        padding: 5rem clamp(1.5rem, 6vw, 8rem) 3rem;
-        border-bottom: 1px solid var(--color-border);
-    }
-    .eyebrow {
-        font-family: var(--font-display);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: var(--color-accent);
-        margin-bottom: 1rem;
-    }
-    .page-title {
-        font-family: var(--font-display);
-        font-size: clamp(3rem, 7vw, 6rem);
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
-        line-height: 0.95;
-        color: var(--color-text);
-    }
-
     /* ── Story ── */
     .story-section {
         display: grid;

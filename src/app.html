@@ -1,6 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl" data-theme="dark">
 	<head>
+		<!-- Apply saved theme before paint to prevent flash -->
+		<script>
+			try {
+				const t = localStorage.getItem('theme');
+				if (t) document.documentElement.setAttribute('data-theme', t);
+			} catch {}
+		</script>
 		%sveltekit.head%
 		<title>Messenslijperij Hillknives</title>
 		<meta charset="utf-8" />

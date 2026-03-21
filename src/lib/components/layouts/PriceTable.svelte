@@ -28,7 +28,7 @@
 
     {#each PRICE_LIST as category}
         <section class="mb-6">
-            <div class="p-5 my-5 font-display background-(--color-bg-surface) shadow-md">
+            <div class="p-5 my-5 font-display background-(--color-bg-surface) table-card">
                 <h2 class="font-display text-2xl font-bold mb-4">{category.title}</h2>
                 <table class="font-display w-full table-auto border-collapse border border-(--color-text)">
                     <thead>
@@ -42,7 +42,7 @@
                     <tbody>
                         {#each category.items as item}
                             {@const id = `${category.title}__${item.label}`}
-                            <tr class="price-row">
+                            <tr class="bg-(--color-olive) hover:bg-(--color-accent-2) transition-colors">
                                 <td class="font-[Open_Sans] border border-(--color-text) p-4">{item.label}</td>
                                 <td class="font-[Open_Sans] border border-(--color-text) p-4 text-nowrap font-bold text-(--color-accent)">{item.price ?? '-'}</td>
                                 <td class="font-[Open_Sans] border border-(--color-text) p-4">{item.unit ?? '-'}</td>
@@ -67,16 +67,15 @@
 </div>
 
 <style>
-    .price-row {
-        background-color: var(--color-olive);
-        transition: background 0.2s, box-shadow 0.2s;
-    }
-    .price-row:hover {
-        background: linear-gradient(180deg, rgba(230,130,70,0.35) 0%, var(--color-accent-2-light) 8%, var(--color-accent-2) 42%, var(--color-accent-2-dark) 78%, rgba(25,8,2,0.92) 100%);
+    .table-card {
+        background: var(--color-bg-surface);
         box-shadow:
-            inset 0 1px 0 rgba(255, 180, 120, 0.2),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+            0 8px 36px rgba(0, 0, 0, 0.38),
+            0 3px 10px rgba(0, 0, 0, 0.22),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--color-border);
     }
+
     .add-btn {
         width: 2.2rem;
         height: 2.2rem;

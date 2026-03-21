@@ -11,8 +11,9 @@ node_modules
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Env
+# Env — NEVER commit real secrets
 .env
 .env.*
 !.env.example
@@ -27,3 +28,18 @@ vite.config.ts.timestamp-*
 *.mov
 *.avi
 *.webm
+
+# Claude Code local config (contains machine-specific paths and permissions)
+.claude/settings.local.json
+
+# Keys and certificates — should never end up in source control
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+
+# Editor directories
+.idea/
+.vscode/settings.json

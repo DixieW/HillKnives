@@ -16,8 +16,6 @@
     --color-accent:       #c8a84b;
     --color-accent-dim:   rgba(200, 168, 75, 0.12);
     --color-accent-2:     #8b3a1a;
-    --color-accent-2-light: #c4572a;
-    --color-accent-2-dark:  #5a2210;
 
     /* Text */
     --color-text:         #eae8e0;
@@ -47,6 +45,63 @@
     background: var(--color-bg-raised);
     font-family: var(--font-body);
   }
-    
+
+}
+
+/* ── Light theme body override — prevent bg-raised mismatch ── */
+[data-theme="light"] body {
+  background: #b08082;
+}
+
+/* ── Light theme (50% towards #580006 from original) ─────── */
+[data-theme="light"] {
+  --color-bg:           #b08082;   /* 0.80×#c6a0a1 + 0.20×#580006 */
+  --color-bg-surface:   #a77578;   /* 0.80×#bb9294 + 0.20×#580006 */
+  --color-bg-raised:    #a06a6c;   /* 0.80×#b28486 + 0.20×#580006 */
+
+  --color-border:       #955659;   /* 0.80×#a46c6e + 0.20×#580006 */
+  --color-border-light: #8b4c4f;   /* 0.80×#985f61 + 0.20×#580006 */
+
+  --color-accent:       #c8a84b;   /* gold brighter — more contrast on red bg */
+  --color-accent-dim:   rgba(200, 168, 75, 0.20);
+  --color-accent-2:     #580006;   /* deep blood red */
+
+  --color-text:         #faf0f0;   /* near-white — dark bg now needs light text */
+  --color-text-muted:   #e8d0d0;   /* soft warm white */
+  --color-text-dim:     #c4a0a2;   /* muted rose-white */
+
+  --color-olive:        #a06a6c;
+  --color-steel:        #8a6264;
+}
+
+/* ── Shared page-header pattern (about / contact / prijzen) ── */
+.page-header {
+  padding: 5rem clamp(1.5rem, 6vw, 8rem) 3rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.page-header .eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+.page-header .page-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+.page-header .intro {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 50ch;
+  line-height: 1.7;
 }
 

@@ -114,6 +114,16 @@
     </div>
 </section>
 
+<!-- ── PITCH ──────────────────────────────────────────── -->
+<section class="pitch-section">
+    <FadeIn direction="down" duration={900}>
+        <p class="pitch-claim">De scherpste messen van Rotterdam? Die komen van HillKnives.</p>
+        <p class="pitch-proof">Herman den Blijker weet het. De toprestaurants van Rotterdam weten het. En nu jij ook.</p>
+        <p class="pitch-body">Bij HillKnives slijpen we alles — snel, vakkundig en eerlijk geprijsd.<br/>Breng je messen langs en ga weg alsof je nieuw bestek hebt.</p>
+        <p class="pitch-tagline">HillKnives Rotterdam — omdat bot snijden geen optie is.</p>
+    </FadeIn>
+</section>
+
 <!-- ── CTA ────────────────────────────────────────────── -->
 <section class="cta-section">
     <FadeIn direction="down" duration={900}>
@@ -127,6 +137,44 @@
 </section>
 
 <style>
+    /* ── Pitch ────────────────────────────────────────── */
+    .pitch-section {
+        background: var(--color-bg-raised);
+        border-top: 2px solid var(--color-border-light);
+        border-bottom: 1px solid var(--color-border-light);
+        padding: 4rem 2rem;
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto;
+    }
+    .pitch-claim {
+        font-family: var(--font-display);
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        font-weight: 700;
+        color: var(--color-accent);
+        letter-spacing: 0.03em;
+        margin-bottom: 1rem;
+    }
+    .pitch-proof {
+        font-size: 1rem;
+        color: var(--color-text-muted);
+        font-style: italic;
+        margin-bottom: 1.5rem;
+    }
+    .pitch-body {
+        font-size: 1.05rem;
+        color: var(--color-text);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+    .pitch-tagline {
+        font-family: var(--font-display);
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-text-dim);
+    }
+
     /* ── Hero ─────────────────────────────────────────── */
     .hero {
         position: relative;
@@ -159,9 +207,11 @@
         inset: 0;
         background: linear-gradient(
             to right,
-            rgba(16, 18, 14, 0.88) 40%,
-            rgba(16, 18, 14, 0.3) 100%
+            rgba(16, 18, 14, 0.94) 40%,
+            rgba(16, 18, 14, 0.38) 100%
         );
+        /* Bottom vignette for depth */
+        box-shadow: inset 0 -120px 80px rgba(10, 12, 8, 0.65);
     }
 
     .hero-content {
@@ -187,17 +237,19 @@
         font-weight: 900;
         line-height: 0.95;
         letter-spacing: -0.02em;
-        color: var(--color-text);
+        color: #f5f3ed;
         text-transform: uppercase;
         margin-bottom: 1.5rem;
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.72), 0 1px 4px rgba(0, 0, 0, 0.55);
     }
 
     .hero-sub {
-        font-size: 1.1rem;
-        color: var(--color-text-muted);
+        font-size: 1.15rem;
+        color: #ccc9be;
         max-width: 40ch;
         line-height: 1.6;
         margin-bottom: 2.5rem;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
     }
 
     .hero-ctas {
@@ -216,6 +268,7 @@
         background: var(--color-bg-raised);
         border-top: 1px solid var(--color-border);
         border-bottom: 1px solid var(--color-border);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255,255,255,0.04);
         flex-wrap: wrap;
     }
     .stat {
@@ -226,22 +279,23 @@
     }
     .stat-number {
         font-family: var(--font-display);
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         font-weight: 800;
         color: var(--color-accent);
         letter-spacing: 0.03em;
+        text-shadow: 0 1px 8px rgba(200, 168, 75, 0.35);
     }
     .stat-label {
-        font-size: 0.7rem;
+        font-size: 0.72rem;
         font-weight: 600;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: var(--color-text-dim);
+        color: var(--color-text-muted);
     }
     .stat-divider {
         width: 1px;
         height: 2.5rem;
-        background: var(--color-border);
+        background: var(--color-border-light);
     }
 
     /* ── Sections ─────────────────────────────────────── */
@@ -249,6 +303,7 @@
     .showcase-section {
         padding: 5rem clamp(1.5rem, 5vw, 6rem);
         background: var(--color-bg);
+        box-shadow: inset 0 8px 32px rgba(0, 0, 0, 0.28);
     }
     .section-title {
         font-family: var(--font-display);
@@ -259,6 +314,7 @@
         color: var(--color-text);
         text-align: center;
         margin-bottom: 3rem;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
     }
 
     .services-grid {
@@ -286,7 +342,8 @@
     .cta-section {
         padding: 6rem clamp(1.5rem, 6vw, 8rem);
         background: var(--color-bg-surface);
-        border-top: 1px solid var(--color-border);
+        border-top: 1px solid var(--color-border-light);
+        box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255,255,255,0.035);
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -310,5 +367,6 @@
         color: var(--color-text);
         line-height: 1.05;
         margin-bottom: 2.5rem;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.32);
     }
 </style>
